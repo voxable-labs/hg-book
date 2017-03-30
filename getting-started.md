@@ -23,9 +23,9 @@ You'll need to add the following `ENV` variables to your secrets file:
 | `API_AI_CLIENT_ACCESS_TOKEN` | The API.ai client access token for the bot's API.ai agent. |
 | `REDIS_CONNECTION_POOL_SIZE` | The size of the Redis connection pool for Sidekiq. |
 
-
-
 ## Setup
+
+In the following setup instructions, replace `BOTNAME` with the name of your bot \(in the below example, this would be `archmaester_bot`\).
 
 * add `app/bot` directory
   * `BOTNAME_bot/` 
@@ -59,7 +59,21 @@ class ArchmaesterBot
 end
 ```
 
+### Add an initializer
 
+Add an initializer for your bot to `config/initializers`:
+
+```ruby
+ArchmaesterBot.init unless Rails.env.test?
+```
+
+### Set up autoload paths
+
+Add the following to `config/environments/development.rb`:
+
+```ruby
+config.autoload_paths += Dir["#{Rails.application.config.root}/app/bot/BOTNAME_bot/**"]
+```
 
 ## Using `ngrok` for local development
 
