@@ -75,6 +75,8 @@ Add the following to `config/environments/development.rb`:
 config.autoload_paths += Dir["#{Rails.application.config.root}/app/bot/BOTNAME_bot/**"]
 ```
 
+This will ensure that you can make changes to your bot's source files without having to reload the server and Sidekiq workers.
+
 ## Using `ngrok` for local development
 
 
