@@ -49,4 +49,12 @@ $ heroku run rake db:migrate --app YOUR_APP
 
 From the Resources tab, activate your worker dynos.
 
+## Troubleshooting
+
+### Platform eror messages
+
+#### "Cannot message users who are not admins, developers or testers of the app"
+
+If your app is meant to be live, this error indicates that you have not submitted the app for review. If your app is in testing, you need to add any users you would like to use the bot as 
+
 
