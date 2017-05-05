@@ -39,7 +39,14 @@ You'll need to add the following config variables to your new Heroku app:
 $ git push heroku master
 ```
 
-## 
+#### 6. Migrate the database
 
+```console
+$ heroku run rake db:migrate --app YOUR_APP
+```
+
+#### 7. Active your worker dynos
+
+From the Resources tab, activate your worker dynos.
 
 
