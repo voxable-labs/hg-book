@@ -155,6 +155,8 @@ end
 
 ## Using `ngrok` for local development
 
+[Get an ngrok account](https://ngrok.com) if you don't have one
+
 where SUBDOMAIN is arbitrary and used for Facebook webhook path
 
 `ngrok http -subdomain=SUBDOMAIN 3000`
