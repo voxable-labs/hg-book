@@ -45,7 +45,7 @@ class ArchmaesterBot
   image_url_base ENV['HOSTNAME']
 
   persistent_menu do
-    call_to_action 'Main menu', payload: {
+    menu_item 'Main menu', payload: {
       action: Actions::MAIN_MENU
     }
   end
@@ -155,9 +155,9 @@ end
 
 ## Using `ngrok` for local development
 
-[Get an ngrok account](https://ngrok.com) if you don't have one
+[Get an ngrok account](https://ngrok.com), if you don't have one
 
-where SUBDOMAIN is arbitrary and used for Facebook webhook path
+Where `SUBDOMAIN` is arbitrary and used for Facebook webhook path:
 
 `ngrok http -subdomain=SUBDOMAIN 3000`
 
