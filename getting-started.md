@@ -82,7 +82,7 @@ The bot controller will inherit from Hg.
 
 Add bot router
 
-* add `app/bot/router.rb`
+* add `app/bot/BOTNAME/router.rb`
 
 Along the lines of:
 
