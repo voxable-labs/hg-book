@@ -59,6 +59,58 @@ class ArchmaesterBot
 end
 ```
 
+### Add the bot controller
+
+The bot controller will inherit from Hg.
+
+* add `app/bot/controllers` directory
+  *  `bot_controller.rb` will inherit from Hg 
+  
+  ```ruby
+  class ArchmaesterBot
+    module Controllers
+      class BotController < Hg::Controller
+      end
+    end
+  end
+  ```
+  
+  *  `default_controller.rb`?
+  *  `welcome_controller.rb`?
+  
+### Router
+
+Add bot router
+
+* add `app/bot/router.rb`
+
+Along the lines of:
+
+```ruby
+class BOTNAME::Router < Hg Router
+...
+  controller ArchmaesterBot::Controllers::WelcomeController do
+    handler MAIN_MENU, :menu
+  end
+end
+```
+
+#### Routes
+
+Mount Hg and Sidekiq
+
+`/config/routes.rb`:
+
+```ruby
+require 'sidekiq/web'
+
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount Hg::Engine, at: 'bot'
+  mount Sidekiq::Web => '/sidekiq'
+end
+```
+
 ### Add an initializer
 
 Add an initializer for your bot to `config/initializers`:
@@ -77,7 +129,11 @@ config.autoload_paths += Dir["#{Rails.application.config.root}/app/bot/BOTNAME_b
 
 This will ensure that you can make changes to your bot's source files without having to reload the server and Sidekiq workers.
 
+### Create User class
+
 ## Using `ngrok` for local development
 
+where SUBDOMAIN is arbitrary and used for Facebook webhook path
 
+`ngrok http -subdomain=SUBDOMAIN 3000`
 
