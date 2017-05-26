@@ -131,6 +131,28 @@ This will ensure that you can make changes to your bot's source files without ha
 
 ### Create User class
 
+`rails generate model User`
+
+In the created migration, add the following to the user class for a Messenger bot:
+
+```ruby
+class CreateUsers < ActiveRecord::Migration[5.0]
+  def change
+    create_table :users do |t|
+      t.string :facebook_psid, index: true
+      t.string :api_ai_session_id
+      t.string :conversation_state
+
+      t.timestamps
+    end
+
+    enable_extension 'hstore'
+
+    add_column :users, :context, :hstore, default: '', null: false
+  end
+end
+```
+
 ## Using `ngrok` for local development
 
 where SUBDOMAIN is arbitrary and used for Facebook webhook path
